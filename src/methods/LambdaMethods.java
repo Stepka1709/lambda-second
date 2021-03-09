@@ -14,10 +14,7 @@ public class LambdaMethods {
     }
 
     public static void maxCountLetter(List<String> l) {
-        if (l.size() == 0) System.out.println("List is empty.");
-        else {
-            int max = l.stream().flatMapToInt(a -> IntStream.of((int) countLowerCase(a))).max().getAsInt();
-            l.stream().filter(a -> countLowerCase(a) == max).forEach(System.out::println);
-        }
+        int max = l.stream().flatMapToInt(a -> IntStream.of((int) countLowerCase(a))).max().orElse(0);
+        l.stream().filter(a -> countLowerCase(a) == max).forEach(System.out::println);
     }
 }
